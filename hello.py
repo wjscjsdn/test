@@ -4,7 +4,12 @@ import sqlite3
 
 
 conn=sqlite3.connect("시설관리.db")
-
+with conn:
+    cur=conn.cursor()
+    cur.execute("select *from 시설관리")
+    rows=cur.fetchall()
+    for row in rows:
+        st.write(row)
 
 
 시설명=st.text_input("시설명")
